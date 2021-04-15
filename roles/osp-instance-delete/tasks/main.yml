@@ -2,8 +2,8 @@
 # tasks file for roles/osp-instance-delete
 - name: Delete server instances
   os_server:
-    cloud:            "openstack"
-    name:             "{{ __openstack_server.name }}"
+    cloud: "openstack"
+    name: "{{ __openstack_server.name }}"
     state: absent
     wait: true
     timeout: 180
@@ -28,6 +28,10 @@
   loop: "{{ r_instances.results }}"
   loop_control:
     loop_var: __instance
+
+
+# Couldn't get my head around reading json output. Will come back to this later
+
 
 # - name: Fetch Instance Info
 #   os_server_info:
