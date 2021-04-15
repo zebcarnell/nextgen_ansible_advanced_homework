@@ -1,5 +1,6 @@
 
 - hosts: localhost
+  gather_facts: false
   vars:
     OSP_GUID: "{{ lookup('env','OSP_GUID') }}"
     OSP_DOMAIN: "{{ lookup('env','OSP_DOMAIN') }}"
@@ -13,6 +14,7 @@
        ansible_ssh_private_key_file: "/root/.ssh/openstack.pem"
 
 - hosts: workstation
+  gather_facts: false
   become: yes
   roles:
     - osp-instance-delete

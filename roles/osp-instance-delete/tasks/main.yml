@@ -3,10 +3,10 @@
 - name: Fetch Instance Info
   os_server_info:
     cloud: openstack
-  register: r_instances.results
+  register: r_instances
 
-# - debug:
-#     msg: "{{ r_instances.openstack_servers }}"
+- debug:
+    msg: "{{ r_instances.openstack_servers }}"
 
 - name: Delete instances
   os_server:
@@ -15,7 +15,7 @@
     state: absent
     wait: true
     timeout: 180
-  loop: "{{ r_instances.results }}"
+  loop: "{{ r_instances }}"
   loop_control:
     loop_var: __instance
   
