@@ -1,5 +1,10 @@
 - name: Create Homework Assignment project
-
+  tower_project:
+    name: Homework Assignment
+    state: present
+    scm_type: git
+    scm_url: {{ scm_url }}
+    tower_config_file: "~/tower_cli.cfg"
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
@@ -7,9 +12,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
+    tower_config_file: "~/tower_cli.cfg"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
 
@@ -28,9 +31,7 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
+    tower_config_file: "~/tower_cli.cfg"
     tower_verify_ssl: no
 
 - name: Associate workstation host to group 
@@ -44,10 +45,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
-    tower_verify_ssl: no
+    tower_config_file: "~/tower_cli.cfg"
     ssh_key_data: /root/.ssh/mykey.pem
     username: "{{ opentlc_login }}"
 
