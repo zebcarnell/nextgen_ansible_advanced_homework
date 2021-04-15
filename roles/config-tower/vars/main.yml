@@ -41,4 +41,3 @@ job_template_name_3tier_app_aws: "09_3 tier app on Prod"
 aws_cred_name: "Creds for AWS instances"
 job_template_smoke_aws: "10_Smoke test Prod env"
 aws_smoke_app_playbook: site-smoketest-aws.yml
-tower_cli_config: "~/.tower_cli.cfg"
