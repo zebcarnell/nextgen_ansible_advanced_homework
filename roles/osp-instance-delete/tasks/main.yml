@@ -5,17 +5,17 @@
     cloud: openstack
   register: r_instances
 
-- debug:
-    msg: "{{ r_instances.openstack_servers }}"
+# - debug:
+#     msg: "{{ r_instances.openstack_servers }}"
 
-# - name: Delete instances
-#   os_server:
-#     cloud: openstack
-#     server: "{{ __instance.__openstack_server.name }}"
-#     state: absent
-#     wait: true
-#     timeout: 180
-#   loop: "{{ r_instances.results }}"
-#   loop_control:
-#     loop_var: __instance
+- name: Delete instances
+  os_server:
+    cloud: openstack
+    server: "{{ __instance.__openstack_server.name }}"
+    state: absent
+    wait: true
+    timeout: 180
+  loop: "{{ r_instances.results }}"
+  loop_control:
+    loop_var: __instance
   
