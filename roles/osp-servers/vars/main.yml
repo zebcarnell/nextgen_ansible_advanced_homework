@@ -2,8 +2,7 @@
 
 # vars file for osp.servers
 openstack_servers:
-  frontend:
-    name: frontend
+  - name: frontend
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -11,8 +10,8 @@ openstack_servers:
     security_group: frontend
     meta:
       - { group: frontends, deployment_name: QA}
-  app1:
-    name: app1
+
+  - name: app1
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -20,8 +19,8 @@ openstack_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
-  app2:
-    name: app2
+
+  - name: app2
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -29,8 +28,8 @@ openstack_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
-  db:
-    name: db
+      
+  - name: db
     state: present
     image: rhel-guest
     key_name: ansible_ssh
