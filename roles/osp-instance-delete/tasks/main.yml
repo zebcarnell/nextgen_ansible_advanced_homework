@@ -3,13 +3,13 @@
 - name: Fetch Instance Info
   os_server_info:
     cloud: openstack
-  register: r_instances
+  register: results
 
 - name: Debug instances 
   debug:
     msg: "Server is {{ __instance.name }}"
     verbosity: 2
-  loop: "{{ r_instances.results }}"
+  loop: "{{ results }}"
   loop_control:
     loop_var: __instance
 
@@ -20,7 +20,7 @@
 #     state: absent
 #     wait: true
 #     timeout: 180
-#   loop: "{{ r_instances.results }}"
+#   loop: "{{ results }}"
 #   loop_control:
 #     loop_var: __instance
   
