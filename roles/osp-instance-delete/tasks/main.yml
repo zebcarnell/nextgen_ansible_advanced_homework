@@ -3,7 +3,7 @@
 - name: Fetch Instance Info
   os_server_info:
     cloud: openstack
-  register: r_instances
+  register: r_instances.results
 
 # - debug:
 #     msg: "{{ r_instances.openstack_servers }}"
