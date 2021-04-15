@@ -10,9 +10,9 @@
     flavor:           "{{ __openstack_server.flavor                 | default('m1.medium') }}"
     key_name:         "{{ __openstack_server.key_name               | default('ansible_ssh') }}"
     wait:             "{{ __openstack_server.wait                   | default('yes') }}"
-    security_groups:  "{{ __openstack_server.security_group_name }}"
+    security_groups:  "{{ __openstack_server.security_group }}"
     delete_fip:       "{{ __openstack_server.delete_fip             | default(true) }}"
-    meta: "group={{ __openstack_server.group }},deployment_name={{ __openstack_server.deployment }}"
+    meta: "group={{ __openstack_server.group }},deployment_name={{ __openstack_server.deployment_name }}"
     nics:
       - net-name: int_network
     userdata: |
