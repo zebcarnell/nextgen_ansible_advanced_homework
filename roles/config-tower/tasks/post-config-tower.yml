@@ -15,8 +15,8 @@
     state: present
     kind: ssh
     tower_config_file: "{{ tower_cli_config }}"
-    ssh_key_data: "{{ os_ssh_key_data }}"
-    username: {{ osp_user }}
+    ssh_key_data: "{{ osp_ssh_key_data }}"
+    username: "{{ osp_user }}"
 
 - name: Create Inventory
   command: |
