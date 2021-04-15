@@ -5,17 +5,29 @@
     cloud: openstack
   register: results
 
-- name: Debug instances 
-  debug:
-    msg: "{{ results }}"
+- name: save the Json data to a Variable as a Fact
+  set_fact:
+    jsondata: "{{ results.stdout | from_json }}"
 
-- name: Debug instances2 
-  debug:
-    msg: "Server is {{ __instance.openstack_server.name }}"
-    verbosity: 2
-  loop: "{{ results }}"
-  loop_control:
-    loop_var: __instance
+- name: Server Names
+  set_fact:  
+    servernames:  "{{ jsondata | json_query(jmesquery) }}"
+  vars:
+    jmesquery: "openstack_servers[*].name"
+
+- name: Print all server names
+  debug: 
+    msg: "{{ item }}"
+  with_items: 
+    - "{{ servernames }}"
+
+# - name: Debug instances2 
+#   debug:
+#     msg: "Server is {{ __instance.openstack_servers.name }}"
+#     verbosity: 2
+#   loop: "{{ results }}"
+#   loop_control:
+#     loop_var: __instance
 
 # - name: Delete instances
 #   os_server:
