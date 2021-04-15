@@ -1,2 +1,14 @@
 ---
 # vars file for roles/osp-instance-delete
+openstack_servers:
+  - name: frontend
+    state: absent
+
+  - name: app1
+    state: absent
+
+  - name: app2
+    state: absent
+
+  - name: db
+    state: absent
