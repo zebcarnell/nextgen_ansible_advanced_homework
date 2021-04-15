@@ -1,9 +1,11 @@
 - name: Create Homework Assignment project
   tower_project:
     name: Homework Assignment
+    organization: 'Default'
     state: present
     scm_type: git
     scm_url: "{{ scm_url }}"
+    scm_update_on_launch: yes
     tower_config_file: "~/tower_cli.cfg"
 
 - name: Machine Credentail to connect to workstation using openstack.pub
