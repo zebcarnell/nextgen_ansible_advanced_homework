@@ -3,7 +3,7 @@
     name: Homework Assignment
     state: present
     scm_type: git
-    scm_url: {{ scm_url }}
+    scm_url: "{{ scm_url }}"
     tower_config_file: "~/tower_cli.cfg"
 
 - name: Machine Credentail to connect to workstation using openstack.pub
