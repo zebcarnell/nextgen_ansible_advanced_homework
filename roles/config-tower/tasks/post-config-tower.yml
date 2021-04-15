@@ -1,7 +1,7 @@
 - name: Create Homework Assignment project
   tower_project:
-    name: Homework Assignment
-    organization: 'Default'
+    name: Homework_Assignment
+    organization: Default
     state: present
     scm_type: git
     scm_url: "{{ scm_url }}"
