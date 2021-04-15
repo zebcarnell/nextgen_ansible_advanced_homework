@@ -4,7 +4,7 @@
 - name: Create server instances
   os_server:
     cloud:            "ospcloud"
-    name:             "{{ __openstack_server.instance_name }}"
+    name:             "{{ __openstack_server.name }}"
     state:            "{{ __openstack_server.state                  | default('present') }}"
     image:            "{{ __openstack_server.image                  | default('rhel-guest') }}"
     flavor:           "{{ __openstack_server.flavor                 | default('m1.medium') }}"
@@ -34,7 +34,7 @@
 
 - name: Debug instances 
   debug:
-    msg: "Server is {{ __instance.__openstack_server.instance_name }}"
+    msg: "Server is {{ __instance.__openstack_server.name }}"
     verbosity: 2
   loop: "{{ r_instances.results }}"
   loop_control:
@@ -48,7 +48,7 @@
         cloud: ospcloud
         state: "{{ openstack_server_state | default('present') }}"
         reuse: yes
-        server: "{{ __instance.__openstack_server.instance_name }}"
+        server: "{{ __instance.__openstack_server.name }}"
         network: ext_network
         wait: true
         timeout: 180
