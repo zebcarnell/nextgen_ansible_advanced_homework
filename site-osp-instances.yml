@@ -9,8 +9,8 @@
     add_host:
        name: "workstation-{{ OSP_GUID }}.{{ OSP_DOMAIN }}"
        group: workstation
-       ansible_user: "{{ OPENTLC_ID }}"
-       #ansible_ssh_private_key_file: "/root/.ssh/mykey.pem"
+       ansible_user: cloud_user
+       ansible_ssh_private_key_file: "/root/.ssh/openstack.pem"
 
 - hosts: workstation
   become: yes
