@@ -5,9 +5,14 @@
     cloud: openstack
   register: results
 
+- name: Debug instances
+  debug:
+    msg: "{{ results }}"
+    verbosity: 2
+
 - name: save the Json data to a Variable as a Fact
   set_fact:
-    jsondata: "{{ results | from_json }}"
+    jsondata: "{{ results.stdout | from_json }}"
 
 - name: Server Names
   set_fact:  
