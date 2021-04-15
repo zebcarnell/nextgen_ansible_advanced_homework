@@ -7,7 +7,11 @@
 
 - name: Debug instances 
   debug:
-    msg: "Server is {{ __instance.name }}"
+    msg: "{{ results }}"
+
+- name: Debug instances2 
+  debug:
+    msg: "Server is {{ __instance.__openstack_server.name }}"
     verbosity: 2
   loop: "{{ results }}"
   loop_control:
