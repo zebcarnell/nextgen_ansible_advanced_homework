@@ -3,7 +3,7 @@
 # tasks file for osp.servers
 - name: Create server instances
   os_server:
-    cloud:            "ospcloud"
+    cloud:            "openstack"
     name:             "{{ __openstack_server.name }}"
     state:            "{{ __openstack_server.state                  | default('present') }}"
     image:            "{{ __openstack_server.image                  | default('rhel-guest') }}"
@@ -45,7 +45,7 @@
 
     - name: Add floating IP to instances
       os_floating_ip:
-        cloud: ospcloud
+        cloud: openstack
         state: "{{ openstack_server_state | default('present') }}"
         reuse: yes
         server: "{{ __instance.__openstack_server.name }}"

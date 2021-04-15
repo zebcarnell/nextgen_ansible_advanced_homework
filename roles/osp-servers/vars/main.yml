@@ -1,4 +1,5 @@
 ---
+openstack_server_state: present
 
 # vars file for osp.servers
 openstack_servers:
