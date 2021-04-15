@@ -42,5 +42,3 @@ aws_cred_name: "Creds for AWS instances"
 job_template_smoke_aws: "10_Smoke test Prod env"
 aws_smoke_app_playbook: site-smoketest-aws.yml
 tower_cli_config: "~/.tower_cli.cfg"
-osp_ssh_key_data: "/root/.ssh/openstack.pem"
-osp_user : cloud-user
