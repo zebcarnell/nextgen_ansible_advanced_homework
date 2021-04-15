@@ -6,7 +6,7 @@
     scm_type: git
     scm_url: "{{ scm_url }}"
     scm_update_on_launch: yes
-    tower_config_file: "~/tower_cli.cfg"
+    tower_config_file: "{{ tower_cli_config }}"
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
@@ -14,9 +14,9 @@
     organization: Default
     state: present
     kind: ssh
-    tower_config_file: "~/tower_cli.cfg"
-    ssh_key_data: "/root/.ssh/openstack.pem"
-    username: cloud-user
+    tower_config_file: "{{ tower_cli_config }}"
+    ssh_key_data: "{{ os_ssh_key_data }}"
+    username: {{ osp_user }}
 
 - name: Create Inventory
   command: |
@@ -33,7 +33,7 @@
     description: "workstation"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_config_file: "~/tower_cli.cfg"
+    tower_config_file: "{{ tower_cli_config }}"
     tower_verify_ssl: no
 
 - name: Associate workstation host to group 
@@ -47,7 +47,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_config_file: "~/tower_cli.cfg"
+    tower_config_file: "{{ tower_cli_config }}"
     ssh_key_data: /root/.ssh/mykey.pem
     username: "{{ opentlc_login }}"
 
