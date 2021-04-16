@@ -14,7 +14,7 @@
 - name: Delete server instances
   os_server:
     cloud: openstack
-    name: "{{ item.name }}"
+    name: "{{ __openstack_server.item.name }}"
     state: absent
     wait: true
     timeout: 180
