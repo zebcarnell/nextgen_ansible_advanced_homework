@@ -3,7 +3,7 @@
 - name: Fetch Instance Info
   os_server_info:
     cloud: openstack
-  register: result
+  register: r_os_servers
 
 - name: Add host to in memory inventory
   add_host:
