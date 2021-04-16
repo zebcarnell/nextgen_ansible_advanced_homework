@@ -1,6 +1,7 @@
 
 - name: Delete OpenStack Servers
   hosts: localhost
+  gather_facts: false
   vars:
     OSP_GUID: "{{ lookup('env','OSP_GUID') }}"
     OSP_DOMAIN: "{{ lookup('env','OSP_DOMAIN') }}"
@@ -15,6 +16,7 @@
 
 - name: Delete OpenStack Servers
   hosts: workstation
+  gather_facts: false
   become: true
   roles:
     - osp-instance-delete
