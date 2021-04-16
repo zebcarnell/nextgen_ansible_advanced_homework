@@ -29,12 +29,11 @@
 # Setup application servers tier
 - name: setup app tier
   hosts: apps
-  gather_facts: false
   become: yes
   gather_facts: false
   roles:
     - {name: base-config, tags: base-config}
-    #- {name: app-tier, tags: [apps, tomcat]}
+    - {name: app-tier, tags: [apps, tomcat]}
 
 # Setup front-end load balancer tier
 - name: setup load-balancer tier
@@ -43,4 +42,4 @@
   gather_facts: false   
   roles:
     - {name: base-config, tags: base-config}
-    #- {name: lb-tier, tags: [lbs, haproxy]}
+    - {name: lb-tier, tags: [lbs, haproxy]}
