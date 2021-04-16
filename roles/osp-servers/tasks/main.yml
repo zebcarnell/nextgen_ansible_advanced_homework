@@ -9,7 +9,7 @@
     image:            "{{ __openstack_server.image }}"
     flavor:           "{{ __openstack_server.flavor }}"
     key_name:         "{{ __openstack_server.key_name }}"
-    wait:             "{{ __openstack_server.wait }}"
+    wait:             "{{ __openstack_server.wait  | default('yes') }}"
     security_groups:  "{{ __openstack_server.security_group }}"
     delete_fip:       "{{ __openstack_server.delete_fip | default(true) }}"
     meta: "group={{ __openstack_server.group }},deployment_name={{ __openstack_server.deployment_name }}"
