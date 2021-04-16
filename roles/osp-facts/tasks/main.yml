@@ -18,3 +18,4 @@
     msg: "{{ item }}"
   with_inventory_hostnames:
     - all
+
