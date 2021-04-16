@@ -1,4 +1,4 @@
----
+
 # tasks file for osp-facts
 - name: Fetch Instance Info
   os_server_info:
