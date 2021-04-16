@@ -6,14 +6,14 @@
     region_name: regionOne
   register: r_os_servers
 
-- name: Debug instances 
-  debug:
-    msg: "Server IP is {{ item.public_v4 }} and Server Name is {{ item.name }}"
-  loop: "{{ r_os_servers.openstack_servers }}"
+# - name: Debug instances 
+#   debug:
+#     msg: "Server IP is {{ item.public_v4 }} and Server Name is {{ item.name }}"
+#   loop: "{{ r_os_servers.openstack_servers }}"
 
 - name: Delete server instances
   os_server:
-    cloud: "openstack"
+    cloud: openstack
     name: "{{ item.name }}"
     state: absent
     wait: true
