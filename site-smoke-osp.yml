@@ -4,14 +4,11 @@
   - name: OpenStack servers
     os_server_info:
       cloud: openstack
-      server: 'frontend'
+      server: frontend
     register: openstack
     tags:
       - osp.smoke
-
-  - name: Debug OpenStack results
-    debug: 
-        msg: "{{openstack}}"
+  - debug: var=openstack
 
   - name: Curl website
     uri: 
@@ -23,11 +20,8 @@
     register: webpage
     tags:
       - osp.smoke
+  - debug: var=webpage
   
-  - name: Debug Web Page results 
-    debug: 
-        msg: "{{webpage}}"
-
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
     when: "'Ansible has done its job' not in webpage.results[0].content"
