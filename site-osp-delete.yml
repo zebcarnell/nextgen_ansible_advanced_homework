@@ -15,7 +15,7 @@
 
 - name: Delete OpenStack Servers
   hosts: workstation
-  #gather_facts: false
+  gather_facts: false
   become: true
   roles:
     - osp-instance-delete

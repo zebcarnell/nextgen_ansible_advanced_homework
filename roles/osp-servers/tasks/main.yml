@@ -15,9 +15,11 @@
     meta: "group={{ __openstack_server.group }},deployment_name={{ __openstack_server.deployment_name }}"
     nics:
       - net-name: int_network
-    userdata: |
-      #!/bin/bash
-      cat /root/.ssh/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+    userdata: |	
+      #!/bin/bash 
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+
   loop: "{{ openstack_servers }}"      
   loop_control: 
     loop_var: __openstack_server
