@@ -13,7 +13,7 @@
 
 - name: Deploy the 3 tier application
   hosts: workstation
-  gather_facts: true
+  gather_facts: false
   roles:
   - name: osp-facts
 
