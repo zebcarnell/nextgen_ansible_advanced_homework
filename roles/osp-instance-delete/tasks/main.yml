@@ -59,6 +59,10 @@
 #   with_items: 
 #     - "{{ servernames }}"
 
+
+
+# OLD - ignore
+
 # - name: Debug instances2 
 #   debug:
 #     msg: "Server is {{ __instance.openstack_servers.name }}"
