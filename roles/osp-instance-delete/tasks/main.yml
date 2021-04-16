@@ -14,34 +14,46 @@
 - name: Delete server instances
   os_server:
     cloud: openstack
-    name: "{{ __openstack_server.item.name }}"
+    name: "{{ item.name }}"
     state: absent
     wait: true
     timeout: 180
   loop: "{{ r_os_servers.openstack_servers }}"
-  loop_control: 
-    loop_var: __openstack_server
-  async: 900
-  poll: 0
-  register: r_instances
 
-- name: Wait for async OSP instance delete to complete
-  async_status: "jid={{ item.ansible_job_id }}"
-  register: r_wait
-  until: r_wait.finished
-  retries: 900
-  loop: "{{ r_instances.results }}"
+# old
 
-- name: Debug instances 
-  debug:
-    msg: "Server is {{ __instance.__openstack_server.name }}"
-    verbosity: 2
-  loop: "{{ r_instances.results }}"
-  loop_control:
-    loop_var: __instance
+# - name: Delete server instances
+#   os_server:
+#     cloud: openstack
+#     name: "{{ __openstack_server.item.name }}"
+#     state: absent
+#     wait: true
+#     timeout: 180
+#   loop: "{{ r_os_servers.openstack_servers }}"
+#   loop_control: 
+#     loop_var: __openstack_server
+#   async: 900
+#   poll: 0
+#   register: r_instances
+
+# - name: Wait for async OSP instance delete to complete
+#   async_status: "jid={{ item.ansible_job_id }}"
+#   register: r_wait
+#   until: r_wait.finished
+#   retries: 900
+#   loop: "{{ r_instances.results }}"
+
+# - name: Debug instances 
+#   debug:
+#     msg: "Server is {{ __instance.__openstack_server.name }}"
+#     verbosity: 2
+#   loop: "{{ r_instances.results }}"
+#   loop_control:
+#     loop_var: __instance
 
 
-#Workings:
+
+#Workings using variables:
 
 # - name: Delete server instances
 #   os_server:
