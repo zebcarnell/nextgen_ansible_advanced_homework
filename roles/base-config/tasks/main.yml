@@ -15,11 +15,11 @@
     baseurl: https://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
     gpgcheck: no
 
-- name: install base tools and packages
-  package:
-    name: "{{ __package }}"
-    state: present
-  loop: "{{ yum_packages }}"        
-  loop_control:
-    loop_var: __package
+# - name: install base tools and packages
+#   package:
+#     name: "{{ __package }}"
+#     state: present
+#   loop: "{{ yum_packages }}"        
+#   loop_control:
+#     loop_var: __package
 
