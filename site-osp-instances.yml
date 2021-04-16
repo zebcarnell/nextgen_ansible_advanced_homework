@@ -14,6 +14,6 @@
 #        ansible_ssh_private_key_file: "/root/.ssh/openstack.pem"
 
 # - hosts: workstation
-  become: yes
+  become: true
   roles:
     - osp-servers
