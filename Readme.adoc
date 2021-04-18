@@ -27,20 +27,10 @@ github_repo= #Path to your github repo for use in provisioning servers and apps
 ```
 
 
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-Zeb Carnell
-
 
 Usage
 ------------------
-
+------------------
 * From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
 
 
@@ -78,3 +68,13 @@ Usage
 |===
 
 ------------------
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Zeb Carnell
