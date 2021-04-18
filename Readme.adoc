@@ -63,3 +63,14 @@ Usage
 | roles/config-tower/tasks/workflow_template.yml | genrate workflow from `workflow.yml` file
 | roles/config-tower/tasks/post-config-tower.yml | any post config jobs
 |===
+
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Zeb Carnell
