@@ -1,31 +1,72 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Playbooks to setup ansible tower, then use CI/CD processes to deploy a QA environment with a 3 tier app and if successful deploy a production environment with the 3 tier app.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Requirements deployed as part of playbook.
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```yaml
+tower_GUID= #GUID for tower environment
+osp_GUID= #GUID for OpenStack environment
+osp_DOMAIN= #Domain for OpenStack environment
+opentlc_login= #Your Red Hat Open TLC login
+path_to_opentlc_key= #Path to your private key for Open TLC login
+param_repo_base= #JQ Repo Base
+opentlc_password= #Your Open TLC Password 
+REGION_NAME= #The AWS region you will deploy your prod environment too. I.E: us-east-1
+EMAIL= #Your email address
+github_repo= #Path to your github repo for use in provisioning servers and apps
+```
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
-Example Playbook
+
+Usage
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+.List of Playbooks
+[%header,cols=2*]
+|===
+| Files or dir | Purpose
+| app-tier | Install application server role
+| db-tier  | Install postgressql server for database role
+| lb-tier  | Install HA proxy role
+| base-config | Setup yum repo and base packages role
+| setup-workstation | Setup workstation, create network, ssh keypair, security group etc. role 
+| osp-servers | Provision OSP Instances role
+| osp-instance-delete | Delete OSP Instances role
+| osp-facts | Genrate in-memory inventory for OSP instances role
+| roles/config-tower/vars/main.yml | Very important file to review. All the variable values are set there. Please do not make any changes in the file
+| config-tower | Role to configure ansible tower job templates and workflow
+| aws_creds.yml | Fetch GUIDkey.pem from bastion of Three tier application env and create machine credential to connect to AWS instances
+| aws_provision.yml | Use `order_svc.sh` script to provision env
+| aws_status_check.yml | Check aws instances are up or not
+| site-3tier-app.yml | Playbook to deploy three tier app
+| site-install-isolated-node.yml | Playbook to install isolated node
+| site-config-tower.yml | Playbook to call role `config-tower`
+| site-osp-delete.yml | Playbook to call role
+| site-osp-instances.yml | Playbook to call role
+| site-setup-prereqs.yml | Playbook to call role
+| site-smoke-osp.yml | Playbook to test three tier app on OSP
+| site-smoketest-aws.yml | Playbook to test three tier app on AWS
+| grading-script.yml | Self grading script
+| roles/config-tower/tasks/ec2_dynamic.yml | For creating Dynamic inventory in Ansible tower. Use `AWS Access Key` for credential
+| roles/config-tower/tasks/job_template.yml | For creating job templates
+| roles/config-tower/tasks/pre-config-tower.yml | Any pre config tasks needed
+| roles/config-tower/tasks/workflow_template.yml | genrate workflow from `workflow.yml` file
+| roles/config-tower/tasks/post-config-tower.yml | any post config jobs
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 License
 -------
@@ -35,4 +76,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Zeb Carnell
