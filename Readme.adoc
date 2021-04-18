@@ -27,9 +27,19 @@ github_repo= #Path to your github repo for use in provisioning servers and apps
 ```
 
 
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Zeb Carnell
+
 
 Usage
-
+------------------
 
 
 
@@ -66,13 +76,3 @@ Usage
 | roles/config-tower/tasks/post-config-tower.yml | any post config jobs
 |===
 
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-Zeb Carnell
