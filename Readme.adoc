@@ -27,12 +27,6 @@ github_repo= #Path to your github repo for use in provisioning servers and apps
 ```
 
 
-Dependencies
-------------
-
-None
-
-
 
 Usage
 ------------
