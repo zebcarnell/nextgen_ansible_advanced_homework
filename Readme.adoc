@@ -1,6 +1,6 @@
 Information
 ------------
-------------
+
 
 Playbooks to setup ansible tower, then use CI/CD processes to deploy a QA environment with a 3 tier app and if successful deploy a production environment with the 3 tier app.
 
@@ -31,6 +31,10 @@ Dependencies
 ------------
 
 None
+
+
+Usage
+------------
 
 .List of Playbooks
 [%header,cols=2*]
