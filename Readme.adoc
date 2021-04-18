@@ -41,6 +41,7 @@ Zeb Carnell
 Usage
 ------------------
 
+* From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
 
 
 .List of Playbooks
@@ -76,3 +77,4 @@ Usage
 | roles/config-tower/tasks/post-config-tower.yml | any post config jobs
 |===
 
+------------------
