@@ -25,12 +25,12 @@ REGION_NAME= #The AWS region you will deploy your prod environment too. I.E: us-
 EMAIL= #Your email address
 github_repo= #Path to your github repo for use in provisioning servers and apps
 ```
-
-
+--------------
+--------------
 
 Usage
 ------------------
-------------------
+
 * From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
 
 
