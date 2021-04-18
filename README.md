@@ -35,9 +35,6 @@ None
 Usage
 ----------------
 
-.List of Playbooks
-[%header,cols=2*]
-|===
 | Files or dir | Purpose
 | app-tier | Install application server role
 | db-tier  | Install postgressql server for database role
