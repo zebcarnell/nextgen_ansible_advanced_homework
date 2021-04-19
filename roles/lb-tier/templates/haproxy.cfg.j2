@@ -19,9 +19,9 @@ defaults
 frontend hafrontend
     bind *:80
     mode http
-    default_backend apps
+    default_backend app-servers
 
-backend apps
+backend app-servers
     mode http
     balance roundrobin
     option forwardfor
