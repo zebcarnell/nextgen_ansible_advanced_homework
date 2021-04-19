@@ -28,19 +28,19 @@
   - debug: var=osp_instance
 
 
-  - name: Access website
-    uri:
-      url: "http://{{ item.public_v4 }}"
-      status_code: 200
-      return_content: yes
-    when: 'item.hostname == "frontend"'
-    loop: "{{ openstack_info.openstack_servers }}"
-    register: qa_webpage
-    ignore_errors: yes
+  # - name: Access website
+  #   uri:
+  #     url: "http://{{ item.public_v4 }}"
+  #     status_code: 200
+  #     return_content: yes
+  #   when: 'item.hostname == "frontend"'
+  #   loop: "{{ openstack_info.openstack_servers }}"
+  #   register: qa_webpage
+  #   ignore_errors: yes
 
-  - name: Fail
-    fail:
-    when: "'Ansible' not in qa_webpage.results[0].content" 
+  # - name: Fail
+  #   fail:
+  #   when: "'Ansible' not in qa_webpage.results[0].content" 
 
   
 - hosts: localhost
