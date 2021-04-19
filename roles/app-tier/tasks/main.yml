@@ -8,6 +8,11 @@
     name: "{{ payload }}"
     enabled: yes
 
+- name: start {{ payload }}
+  service:
+    name: tomcat
+    state: started
+
 - name: create tomcat default web directory
   file:
     path: "{{ tomcat_web_root }}"
@@ -18,8 +23,4 @@
     src: index.html.j2
     dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
-
-- name: restart tomcat
-  service:
-    name: "{{ payload }}"
-    state: restarted
+  notify: restart "{{ payload }}"
