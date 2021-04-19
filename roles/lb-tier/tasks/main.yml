@@ -13,8 +13,9 @@
     src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     mode: 0644
+  notify: restart "{{ payload }}"
 
 - name: start {{ payload }}
   service:
-    name: "{{ payload }}"
-    state: restarted
+    name: tomcat
+    state: started
