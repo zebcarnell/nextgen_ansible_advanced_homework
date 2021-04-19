@@ -1,39 +1,26 @@
-- name: Install apache and tomcat
+- name: install {{ payload }}
   yum:
-    name:
-    - httpd
-    - tomcat
+    name: "{{ payload }}"
     state: latest
 
-- name: Create ansible tomcat directory
+- name: enable {{ payload }} when booting
+  service:
+    name: "{{ payload }}"
+    enabled: yes
+
+- name: create tomcat default web directory
   file:
-    path: "{{ __tomcat_web_root_directory }}"
+    path: "{{ tomcat_web_root }}"
     state: directory
 
-- name: Write webapps/ROOT/index.html
+- name: copy static index.html to tomcat webroot
   template:
     src: index.html.j2
-    dest: "{{ __tomcat_web_root_directory }}/index.html"
+    dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
+  notify: restart "{{ payload }}"
 
-- name: Start tomcat and enabled at boot
+- name: start {{ payload }}
   service:
-    name: tomcat
-    state: started
-    enabled: true
-
-- name: Create ansible tomcat directory
-  file:
-    path: "{{ __tomcat_directory }}"
-    state: directory
-
-- name: Copy static index.html to tomcat webapps/ansible/index.html
-  template:
-    src: index.html.j2
-    dest: "{{ __tomcat_directory }}/index.html"
-
-- name: Start apache httpd and enable at boot
-  service:
-    name: httpd
-    enabled: true
+    name: "{{ payload }}"
     state: started
